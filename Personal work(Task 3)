@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <locale.h>
+#include <stdlib.h>
+
+float find_perimeter(float a,float b)
+{
+	float perimeter = (a + b) * 2;
+	return perimeter;
+}
+
+float find_square(float a, float b)
+{
+	float square1 = a * b;
+	return square1;
+}
+
+
+
+float main()
+{
+	setlocale(LC_ALL, "Russian");
+	puts("Индивидуальное задание. Вариант - 1\v");
+	float a, b, square1, perimeter;
+	printf("Введите длину первой стороны:\n");
+	scanf("%f", &a);
+	printf("Введите длину второй стороны:\n");
+	scanf("%f", &b);
+	printf("Ваши данные: A=%f,B=%f\n\v\v", a, b);
+	perimeter = find_perimeter(a, b);
+	square1 = find_square(a, b);
+	printf("Периметр прямоугольника равен: %f\n", perimeter);
+	printf("Площадь прямоугольника равна: %f\n", square1);
+	system("pause");
+}
