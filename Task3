@@ -1,0 +1,49 @@
+#include<stdio.h>
+#include<locale.h>
+#define	ED  2.54
+#define	SD	2.32166
+#define	LD  2.7076
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	puts("Задание 1.\v");
+	int num1;
+	puts("Введите первое число:");
+	scanf("%d", &num1);
+	printf("Введено первое число: %d\n\v", num1);
+	int num2;
+	puts("Введите второе число:");
+	scanf("%d", &num2);
+	printf("Введено второе число: %d\n\v", num2);
+	printf("Cумма данных чисел: %d + %d = %d\n", num1, num2, num1 + num2);
+	printf("Разность данных чисел: %d - %d = %d\n", num1, num2, num1 - num2);
+	printf("Произведение данных чисел: %d * %d = %d\n", num1, num2, num1 * num2);
+	printf("Частное данных чисел: %d / %d = %d\n", num1, num2, num1 / num2);
+	printf("Остаток от деления данных чисел: %d %% %d = %d\n\v\v", num1, num2, num1 % num2);
+	puts("Задание 2.\v");
+	int dym;
+	float result, result1, result2;
+	puts("Введите значение для рассчёта:");
+	scanf("%d", &dym);
+	result = ED * dym;
+	result1 = SD * dym;
+	result2 = LD * dym;
+	printf("%d дюймов(английский стандарт) – это %.2f см\n", dym, result);
+	printf("%d дюймов(испанский стандарт) – это %.2f см\n", dym, result1);
+	printf("%d дюймов(старолитовский стандарт) – это %.2f см\n\v", dym, result2);
+	puts("Задание 3.");
+	float a, b;
+	puts("Введите первое число:");
+	scanf("%f", &a);
+	puts("\vВведите второе число:");
+	scanf("%f", &b);
+	printf("\vВаши числа: %.0f %.0f\n", a, b);
+	printf("-------------------------------------------------\n");
+	printf("|	a*b	|	a+b	|	a-b	|\n");
+	printf("-------------------------------------------------\n");
+	printf("|	%.0f*%.0f	|	%.0f+%.0f	|	%.0f-%.0f	|\n", a, b, a, b, a, b);
+	printf("-------------------------------------------------\n");
+	printf("|	%.0f	|	%.0f	|	%.0f	|\n", a * b, a + b, a - b);
+	printf("-------------------------------------------------\n");
+}
