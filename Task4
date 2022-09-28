@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <locale.h>
+#include <math.h>
+
+void main()
+{
+    setlocale(LC_ALL, "RUS");
+
+    puts("Задание 1\n\v");
+    char c;
+    int i;
+    float f;
+    double d;
+    puts("Введите символ:");
+    scanf("%c", &c);
+    puts("Введите целое число:");
+    scanf("%i", &i);
+    puts("Введите число с остатком");
+    scanf("%f", &f);
+    puts("Введите число с буквой e");
+    scanf("%le", &d);
+    printf("Ваш результат: c = %c, i = %i, f = %f, d = %e\n\v", c, i, f, d);
+
+    puts("Задача 1а");
+    printf("Целая часть f - %d\n", (int)f);
+    printf("Дробная часть f - %f\n\v", f - (int)f);
+    puts("Задача 1б");
+    printf("ASCII-код символа c - %d\n\v", (int)c);
+    puts("Задача 1в");
+    printf("Десятичное число i - %d\n\v", i);
+
+    puts("Задание 2\n\v");
+    int a = 11;
+    int b = 3;
+    int x = a / b;
+    float y = a / b;
+    double z = a / b;
+    printf("x = %d, y = %f, z = %lf\n", x, y, z);
+    printf("(float)a/b = %f, (double)a/b = %lf\n\v", (float)(a / b), (double)(a / b));
+
+    puts("Задание 3\n\v");
+    int q;
+    puts("Введите целое трёхзначное число:");
+    scanf("%d", &q);
+    printf("Последняя цифра чила - %d.\nПервая цифра числа - %d.\nCумма цифр числа - %d\n", q % 10, q / 100, (q % 10) + (q / 100) + ((q % 100) / 10));
+    printf("Ваше число \"наоборот\": %d\n", 100 * (q % 10) + 10 * (((q % 100) / 10)) + (q / 100));
+    
+
+}
