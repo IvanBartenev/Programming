@@ -1,0 +1,48 @@
+#include<stdio.h>
+#include<locale.h>
+#include<math.h>
+
+#define M_PI	3.14159265358979323846
+#define c	0.4
+
+float res(float x)
+{
+	float a = log10(x);
+	float b = pow(a, 2) + sqrt(c * x);
+	float y = pow(exp(2), x) + pow(9.7, b);
+	return y;
+}
+
+void main()
+{
+	setlocale(LC_ALL, "Russian");
+	puts("Задание 1\n\v");
+	float gr;
+	float rad;
+	float ssin;
+	puts("Введите число:");
+	scanf("%f", &gr);
+	printf("Ваше значение: %f\n", gr);
+	rad = (gr * M_PI) / 180;
+	printf("%f градусов будет равно %f радиан\n", gr, rad);
+	ssin = sin(rad);
+	printf("Cинус угла равен %10.6f\n\v", ssin);
+
+	puts("Задание 2\n\v");
+	printf("2^8 = %g\n2^16 = %g\n2^32 = %g\n2^64 = %g\n2^128 = %g\n\n\n", pow(2, 8), pow(2, 16), pow(2, 32), pow(2, 64), pow(2, 128));
+
+
+	puts("Задание 3 - Вариант 1\n\v");
+	float a, b, x, y;
+	puts("Введите число x:");
+	scanf("%f", &x);
+	y = res(x, a, b);
+	printf("При вашем значении x = %f - значение y = %f\n\v", x, y);
+
+
+
+
+
+
+
+}
