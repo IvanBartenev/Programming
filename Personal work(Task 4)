@@ -7,14 +7,24 @@
 #include<stdio.h>
 #include<math.h>
 #include<locale.h>
+#include<stdlib.h>
 
-int main()
+
+float molequles(float a)
+{
+	double b = (a * 950) / (3.0 * pow(10, -23));
+	return b;
+}
+
+
+double main()
 {
 	setlocale(LC_ALL, "Russian");
-	float a, b;
-	printf("Введите количество литров воды\n");
+	float a;
+	double b;
+	puts("Введите количество литров воды");
 	scanf("%f", &a);
-	b = (a * 950) / (3.0 * (10 ^ -23));
-	printf("Количество молекул в воде равно: %e\n", b);
-	return 0;
+	b = molequles(a);
+	printf("Количество молекул в воде равно: %lf\n", b);
+	system("pause");
 }
