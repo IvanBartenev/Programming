@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include<locale.h>
+#include<math.h>4
+#define Pi  3.14159265358979323846
+
+float res(float x, float y, float z)
+{
+	float t = ((2 * cos(x - Pi/6))/(0.5 + sin(y)*sin(y)))*(1 + (pow(z, 2)/(3 - pow(z, 2)/5)));
+	return t;
+}
+
+void main()
+{
+	setlocale(LC_ALL, "Russian"); 
+	float x, y, z, t;
+	puts("Введите x, y, z\n");
+	scanf("%f%f%f", &x, &y, &z);
+	printf("Ваши числа: x=%f, y=%f, z=%f\n\v", x, y, z);
+	t = res(x, y, z);
+	printf("Ваш результат: %f\n", t);
+}
