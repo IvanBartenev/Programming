@@ -1,0 +1,45 @@
+#include<stdio.h>
+#include<locale.h>
+#include<math.h>
+
+int main()
+{
+	setlocale(0, "Russian");
+	char c;
+	printf("Введите символ: ");
+	scanf("%c", &c);
+	if (c >= 'a' && c <= 'z') {
+		puts("Введённый вами символ - это буква\n\v");
+	}
+	else if (c >= '0' && c <= '9') {
+		puts("Введенный вами символ - это цифра\n\v");
+	}
+	else {
+		puts("Введенный вами символ - это НЕ цифра и НЕ буква\n\v");
+	}
+
+	float x, y;
+	char c1;
+	puts("Введите значение x, операцию, которую хотите совершить(+, -, /, *, ^) и значение y:\n");
+	scanf("%f\n%c\n%f", &x, &c1, &y);
+	switch (c1)
+	{
+	case  '+':
+		printf("Итоговое значние вычеслений равно: %f", x + y);
+		break;
+	case  '-':
+		printf("Итоговое значние вычеслений равно: %f", x - y);
+		break;
+	case  '/':
+		printf("Итоговое значние вычеслений равно: %f", x / y);
+		break;
+	case  '*':
+		printf("Итоговое значние вычеслений равно: %f", x * y);
+		break;
+	case  '^':
+		printf("Итоговое значние вычеслений равно: %f", pow(x, y));
+		break;
+	default:
+		puts("Ошибка");
+	}
+}
