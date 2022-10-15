@@ -1,0 +1,28 @@
+#include<stdio.h>
+#include<math.h>
+#include<locale.h>
+
+void main()
+{
+	setlocale(LC_ALL, "Russian");
+	int yeas;
+	puts("Введите год:\n");
+	scanf("%i", &yeas);
+	if ((yeas % 4 == 0 && yeas % 100 != 0) || yeas % 400 == 0) {
+		printf("Год %i високосный\n\v", yeas);
+	}
+	else {
+		printf("Год %i не високосный\n\v", yeas);
+	}
+
+	float x, y;
+	puts("Введите значение x:\n");
+	scanf("%f", &x);
+	if (x <= 3) {
+		y = pow(x, 2) - 3 * x + 9;
+	}
+	else if (x > 3) {
+		y = 1 / (pow(x, 3) + 6);
+	}
+	printf("Ваше значение y равно %f:\n\v", y);
+}
