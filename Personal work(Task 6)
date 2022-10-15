@@ -1,0 +1,35 @@
+//1. Вычислите min(x^2+y^2,y^3-2*x^2)-4, где x, y – вводимая переменная.
+#include<stdio.h>
+#include<math.h>
+#include<locale.h>
+
+float res1(float x, float y)
+{
+	float res1;
+	res1 = pow(x, 2) + pow(y, 2);
+	return res1;
+}
+
+float res2(float x, float y)
+{
+	float res2;
+	res2 = pow(y, 3) - 2 * pow(x, 2);
+	return res2;
+}
+
+void main()
+{
+	setlocale(LC_ALL, "Russian");
+	float x, y, r1, r2, rm;
+	puts("Введите x и y:\n");
+	scanf("%f%f", &x, &y);
+	r1 = res1(x, y);
+	r2 = res2(x, y);
+	if (r1 < r2) {
+		rm = r1 - 4;
+	}
+	else {
+		rm = r2 - 4;
+	}
+	printf("Ваш результат: %f", rm);
+}
