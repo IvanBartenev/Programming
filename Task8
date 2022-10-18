@@ -39,15 +39,13 @@ void main()
 
 
 	float x = 0.1, y;
-	int count = 0, times;
+	int times;
 	puts("Введите количество повторений функции:");
 	scanf_s("%d", &times);
-	puts("|	x	|	f(x)	|");
-	while (count < times)
+	puts("|	x	|	f(x)		|");
+	for (int q = x, count = 0; count < times; count++, x += 2)
 	{
 		y = pow(x, 2) + sin(5 * x);
 		printf("|	%.1f	|	%f	|\n", x, y);
-		x += 2;
-		count += 1;
 	}
 }
