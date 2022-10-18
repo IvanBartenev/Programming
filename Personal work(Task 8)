@@ -1,0 +1,31 @@
+#include<stdio.h>
+#include<locale.h>
+#include<math.h>
+
+//Вариант 26. Вычислите 1^K + 2^K + ... + N^K для заданного пользователем целого N и K.
+
+void main()
+{
+	while (1)
+	{
+		char aa;
+		setlocale(0, "Russian");
+		puts("Введите значение степени K и количества повторений N");
+		float k, b, sum = 0, num = 1, z;
+		scanf_s("%f", &k);
+		scanf_s("%f", &b);
+		for (float c = b, count = 0; count < c; count++)
+		{
+			z = pow(num, k);
+			num++;
+			sum = sum + z;
+		}
+		printf("Ваша итоговая сумма равна - %f\v\v", sum);
+
+
+		printf("Продолжить ? (Да - y, нет - n)\v\v");
+		scanf_s("%c", &aa);
+		if ((aa = getchar()) == 'n')
+			break;
+	}
+}
