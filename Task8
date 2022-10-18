@@ -1,0 +1,53 @@
+#include<stdio.h>
+#include<locale.h>
+#include<math.h>
+
+
+void main()
+{
+	setlocale(LC_ALL, "Russian");
+	int end;
+	puts("Введите конечное значение прогрессии и символ, который будет выводиться на экран:\n");
+	scanf_s("%i",&end);
+	for (int start = 1; start <= end; start++)
+	{
+		if ((start == 1) || (start  == end)) {
+			putchar('+');
+		}
+		putchar('!');
+		if (start != end && start <= end / 2) {
+			putchar('*'); // Введите символ, который будет выводиться
+		}
+		if (start != end && start > end / 2) {
+			putchar('^'); // Введите символ, который будет выводиться
+		}
+	}
+	
+	puts("\v\v");
+	
+	int n, m, s = 0;
+	puts("Введите значение n");
+	scanf_s("%d", &n);
+	puts("Введите значение m");
+	scanf_s("%d", &m);
+	for (int i = m; i >= n; i--)
+	{
+		s += i;
+		printf("Выполнено %d раз\n", i + 1);
+	}
+	printf("Ваш результат %d\v\v", s);
+
+
+	float x = 0.1, y;
+	int count = 0, times;
+	puts("Введите количество повторений функции:");
+	scanf_s("%d", &times);
+	puts("|	x	|	f(x)	|");
+	while (count < times)
+	{
+		y = pow(x, 2) + sin(5 * x);
+		printf("|	%.1f	|	%f	|\n", x, y);
+		x += 2;
+		count += 1;
+	}
+}
