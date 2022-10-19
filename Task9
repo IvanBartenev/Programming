@@ -17,9 +17,9 @@ void main()
 	{
 		for (col = 1; col <= row; col++)
 			printf("%5d", col * row);
-			printf("\n");
+		printf("\n");
 	}
-	
+
 	puts("\v\v");
 
 	int row1, col1;
@@ -27,7 +27,13 @@ void main()
 	{
 		for (col1 = 1; col1 <= COL1; col1++)
 			printf("   5");
-			printf("\n");
+		printf("\n");
 	}
 
-}
+	int counut = 0, num;
+	puts("Введите ваше число:\n");
+	scanf_s("%f", &num);
+	for (int x = num; x != 0; x / 10)
+	{
+		if ()
+	}
