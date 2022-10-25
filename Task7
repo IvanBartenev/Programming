@@ -8,6 +8,7 @@ int main()
 	char c;
 	printf("Введите символ: ");
 	scanf("%c", &c);
+	/*
 	if (c >= 'a' && c <= 'z') {
 		puts("Введённый вами символ - это буква\n\v");
 	}
@@ -17,7 +18,119 @@ int main()
 	else {
 		puts("Введенный вами символ - это НЕ цифра и НЕ буква\n\v");
 	}
-
+	*/
+	switch (c)
+	{
+	case '0':
+		printf("Это цифра\n");
+		break;
+	case '1':
+		printf("Это цифра\n");
+		break;
+	case '2':
+		printf("Это цифра\n");
+		break;
+	case '3':
+		printf("Это цифра\n");
+		break;
+	case '4':
+		printf("Это цифра\n");
+		break;
+	case '5':
+		printf("Это цифра\n");
+		break;
+	case '6':
+		printf("Это цифра\n");
+		break;
+	case '7':
+		printf("Это цифра\n");
+		break;
+	case '8':
+		printf("Это цифра\n");
+		break;
+	case '9':
+		printf("Это цифра\n");
+		break;
+	case 'a':
+		printf("Это буква\n");
+		break;
+	case 'b':
+		printf("Это буква\n");
+		break;
+	case 'c':
+		printf("Это буква\n");
+		break;
+	case 'd':
+		printf("Это буква\n");
+		break;
+	case 'e':
+		printf("Это буква\n");
+		break;
+	case 'f':
+		printf("Это буква\n");
+		break;
+	case 'g':
+		printf("Это буква\n");
+		break;
+	case 'h':
+		printf("Это буква\n");
+		break;
+	case 'i':
+		printf("Это буква\n");
+		break;
+	case 'j':
+		printf("Это буква\n");
+		break;
+	case 'k':
+		printf("Это буква\n");
+		break;
+	case 'l':
+		printf("Это буква\n");
+		break;
+	case 'm':
+		printf("Это буква\n");
+		break;
+	case 'n':
+		printf("Это буква\n");
+		break;
+	case 'o':
+		printf("Это буква\n");
+		break;
+	case 'p':
+		printf("Это буква\n");
+	case 'q':
+		printf("Это буква\n");
+		break;
+	case 'r':
+		printf("Это буква\n");
+		break;
+	case 's':
+		printf("Это буква\n");
+		break;
+	case 't':
+		printf("Это буква\n");
+		break;
+	case 'u':
+		printf("Это буква\n");
+		break;
+	case 'v':
+		printf("Это буква\n");
+		break;
+	case 'w':
+		printf("Это буква\n");
+		break;
+	case 'x':
+		printf("Это буква\n");
+		break;
+	case 'y':
+		printf("Это буква\n");
+		break;
+	case 'z':
+		printf("Это буква\n");
+		break;
+	default:
+		printf("Неизвестный символ\n");
+	}
 	float x, y;
 	char c1;
 	puts("Введите значение x, операцию, которую хотите совершить(+, -, /, *, ^) и значение y:\n");
@@ -43,3 +156,4 @@ int main()
 		puts("Ошибка");
 	}
 }
+
