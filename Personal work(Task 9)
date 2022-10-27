@@ -1,0 +1,22 @@
+#include<stdio.h>
+#include<locale.h>
+
+
+
+void main()
+{
+	setlocale(0, "Russian");
+	int l;
+	char k;
+	puts("Введите длину стороны квадрта:\n");
+	scanf_s("%d", &l);
+	puts("Введите символ из которого будет состоять фигура:\n");
+	scanf_s("%c", &k);
+	scanf_s("%c", &k);
+	for (int i = 0; i < l; i++) {
+		for (int j = 0; j < l; j++) {
+			printf(" %c", k);
+		}
+		printf("\n");
+	}
+}
