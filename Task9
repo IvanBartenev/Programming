@@ -30,10 +30,25 @@ void main()
 		printf("\n");
 	}
 
-	int counut = 0, num;
-	puts("Введите ваше число:\n");
-	scanf_s("%f", &num);
-	for (int x = num; x != 0; x / 10)
-	{
-		if ()
+	int count = 0, num;
+	while (1) {
+		char a;
+		puts("Введите ваше число:\n");
+		scanf_s("%d", &num);
+		while (num != 0)
+		{
+			if (num % 10 == 3) {
+				num = num / 10;
+				count++;
+			}
+			else {
+				num = num / 10;
+			}
+		}
+		printf("Количество троек в вашем числе: %d\n", count);
+		count = 0;
+		printf("Продолжить ? (Да - y, нет - n)\n");
+		scanf("%c", &a);
+		if ((a = getchar()) == 'n') break;
 	}
+}
