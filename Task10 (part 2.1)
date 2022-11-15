@@ -1,0 +1,16 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#define M_PI 3.14159265358979323846
+#include <stdio.h>
+#include <locale.h>
+#include <math.h>
+
+void main()
+{
+	setlocale(0, "RUS");
+	double x, s;
+	puts("\t\tЗадание 1.1");
+	puts("Введите значение x:");
+	scanf("%lf", &x);
+	s = sin(x);
+	printf("Результат равен: %lf", s);
+}
