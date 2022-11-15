@@ -1,0 +1,67 @@
+#include <stdio.h>
+#include <locale.h>
+#include <math.h>
+#include <stdlib.h>
+#define N 10
+#define V 100
+
+float fanc(float x)
+{
+	float y;
+	y = pow(x, 2) * sin(5 * x);
+}
+
+int main(void)
+{
+	setlocale(0, "RUS");
+	// 1
+	float temp;
+	float A[N];
+	for (int i = 0; i < 10; i++)
+	{
+		printf("A[%d]=", i + 1);
+		scanf_s("%f", &temp);
+		A[i] = temp;
+	}
+
+	int count = 2;
+	float summ = 0;
+	for (int j = 0; j < 10; j++)
+	{
+		printf("\nA[%d]	|	%.2f	|	%.2f	|", j + 1, A[j], A[j] * 2);
+		summ += A[j];
+	}
+	printf("\nCреднее арифметическое элементов массива %f", summ / 10.);
+
+	//2
+
+	float Z[V];
+	float step = 2;
+	float x = 0.1;
+
+	for (int i = 0; i < V + 1 ; i++)
+	{
+		Z[i] = fanc(x);
+		x += step;
+		printf("\n B[%d] = %f", i, Z[i]);
+	}
+
+	float summ_2 = 0;
+	float summ_3 = 0;
+	int count_2 = 0;
+	int count_3 = 0;
+
+	for (int i = 0; i < V + 1; i++)
+		if (Z[i] > 0)
+		{
+			summ_2 += Z[i];
+			count_2 += 1;
+		}
+		else
+		{
+			summ_3 += Z[i];
+			count_3 += 1;
+		}
+	printf("\nКоличество отрицательны элементов %d \nСумма отрицательных элементов %f \nКоличество положительных элементов: %d \nСумма положительных элементов: %f", count_3, summ_3, count_2, summ_2);
+	printf("\nСреднее значение положительны значений заполненного массива: %f", summ_2 / count_2);
+}
