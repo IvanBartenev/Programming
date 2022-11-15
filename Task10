@@ -1,0 +1,106 @@
+#include <stdio.h>
+#include <locale.h>
+#include <math.h>
+
+int factorial(int count) {
+    int result = 1;
+    for (int i = 1; i <= count; i++)
+        result = result * i;
+    return result;
+}
+
+double sin_n(double x, int n) {
+    double sum = 0;
+    for (int i = 1; i <= n; i++) {
+        sum += pow(-1, i - 1) * (pow(x, 2 * i - 1) / (double)(factorial(2 * i - 1)));
+    }
+    return sum;
+}
+
+double sin_eps(double x, double eps) {
+    double sum = 0;
+    double ak = x;
+    int counter = 1;
+    while (fabs(ak) > eps) {
+        sum += ak;
+        counter += 1;
+        ak *= pow(-1, counter - 1) * (pow(x, 2 * counter - 1) / (double)(factorial(2 * counter - 1)));
+    }
+    return sum;
+}
+
+double getArea(double height) {
+    double res = pow(height, 2);
+    return res;
+}
+
+void drawsquare(double heigth) {
+    for (int i = 0; i < heigth; i++) {
+        for (int j = 0; j < heigth; j++) {
+            printf(" *");
+        }
+        printf("\n");
+    }
+}
+
+void main()
+{
+    setlocale(LC_ALL, "RUS");
+
+    // 2
+    int angle;
+    puts("Введите угол в градусах: ");
+    scanf("%d", &angle);
+    double rads = angle / 57.2958;
+    // 2.1
+    printf("sin(%d)=%lf - По функции библиотеке math.h\n", angle, sin(rads));
+
+    puts("Введите количество итераций для второй функции синуса:");
+    int iterations;
+    scanf("%d", &iterations);
+    printf("sin_n(%d)=%lf - По собственной функции\n", angle, sin_n(rads, iterations));
+
+    puts("Введите точность в формате(1e+3) для третьей функции синуса:");
+    double esp;
+    scanf("%lf", &esp);
+    printf("sin_eps(%d, %lf) = %lf - По второй собственной функции\n\n\n", angle, esp, sin_eps(rads, esp));
+
+
+    // 3
+    char ch = 'y';
+    double heigth;
+    while (ch == 'y') {
+        int ans;
+        puts("Выберите пункт меню:\n1)Вывести определение квадрата;\n2)Посчитать площадь квадрата;\n3)Нарисовать квадрат.");
+
+        scanf("%d", &ans);
+        switch (ans) {
+        case 1:
+            puts("Квадрат — правильный четырёхугольник, у которого все стороны и углы равны между собой.");
+            break;
+
+        case 2:
+            puts("Введите длину стороны квадрата:");
+            scanf("%lf", &heigth);
+            double area = getArea(heigth);
+            printf("Площадь квадрата равна %.1lf\n", area);
+            break;
+
+        case 3:
+            puts("Введите длину стороны квадрата: ");
+            scanf("%lf", &heigth);
+
+            puts("\n\n\n");
+            drawsquare(heigth);
+            puts("\n\n\n");
+            break;
+
+        default:
+            puts("Выбран некорректный пункт меню!");
+        }
+        puts("Показать меню ещё раз(y/n):");
+        scanf("%c", &ch);
+        scanf("%c", &ch);
+    }
+
+}
