@@ -1,0 +1,38 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#define M_PI 3.14159265358979323846
+#include <stdio.h>
+#include <locale.h>
+#include <math.h>
+
+
+int Factorial(unsigned N)
+{
+	int result = 1;
+	for (unsigned i = 1; i < N + 1; i++) result *= i;
+	return result;
+}
+
+double ryad(double x, int eps)
+{
+	double z = 0;
+	int n = 0;
+	for (; n < eps && fabs(x) <= 1; n++)
+	{
+		z = z + ((pow(-1, n + 1) * pow(x, n)) / Factorial(n));
+	}
+	return z;
+}
+
+void main(void)
+{
+	int eps;
+	double x;
+	setlocale(0, "Russian");
+	puts("\t\tЗадание 2.3");
+	puts("Введите x:");
+	scanf("%lf", &x);
+	puts("Введите точность вычисления:");
+	scanf("%d", &eps);
+	printf("e^-x = %f", (M_PI / 2) + ryad(x, eps));
+}
+
