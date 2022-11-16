@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <locale.h>
+#include <math.h>
+#include <stdlib.h>
+#define N  10
+
+//Вычислите среднее арифметическое всех значений элементов массива, кроме минимального значения
+
+
+int main(void)
+{
+	setlocale(0, "RUS");
+	float temp, average;
+	float A[N];
+	float sum = 0;
+	for (int i = 0; i < 10; i++)
+	{
+		printf("A[%d]=", i + 1);
+		scanf_s("%f", &temp);
+		A[i] = temp;
+		sum = sum + A[i];
+	}
+	float min = A[0];
+	for (int i = 1; i < N; i++)
+		if (A[i] < min) {
+			min = A[i];
+		}
+	printf("\n Минимальный элемент %f", min);
+	sum = sum - min;
+	average = sum / 9.0;
+	printf("\nСреднее арифметическое всех значений элементов массива, кроме минимального значения равно: %f", average);
+}
