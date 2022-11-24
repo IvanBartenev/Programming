@@ -29,17 +29,24 @@ double sin_eps(double x, double eps) {
     return sum;
 }
 
-double getArea(double height) {
-    double res = pow(height, 2);
+double getArea(double height, double len) {
+    double res = (1./2) * height * len;
     return res;
 }
 
-void drawsquare(double heigth) {
-    for (int i = 0; i < heigth; i++) {
-        for (int j = 0; j < heigth; j++) {
-            printf(" *");
-        }
+void drawtriangle(double heigth) {
+    int i = 0, j = 0;
+    for (i = 0; i < heigth; i++)
+    {
         printf("\n");
+        for (j = (heigth - i) - 1; j > 0; j--)
+        {
+            printf(" ");
+        }
+        for (j = (i * 2) + 1; j > 0; j--)
+        {
+            printf("*");
+        }
     }
 }
 
@@ -68,30 +75,30 @@ void main()
 
     // 3
     char ch = 'y';
-    double heigth;
+    double heigth, len;
     while (ch == 'y') {
         int ans;
-        puts("Выберите пункт меню:\n1)Вывести определение квадрата;\n2)Посчитать площадь квадрата;\n3)Нарисовать квадрат.");
+        puts("Выберите пункт меню:\n1)Вывести определение прямоугольного треугольника;\n2)Посчитать площадь прямоугольного треугольника;\n3)Нарисовать прямоугольный треугольник\.");
 
         scanf("%d", &ans);
         switch (ans) {
         case 1:
-            puts("Квадрат — правильный четырёхугольник, у которого все стороны и углы равны между собой.");
+            puts("Равнобедренный треугольник — треугольник, у которого две стороны равны. Эти равные стороны называются боковыми сторонами, а третья сторона — основанием равнобедренного треугольника.");
             break;
 
         case 2:
-            puts("Введите длину стороны квадрата:");
-            scanf("%lf", &heigth);
-            double area = getArea(heigth);
-            printf("Площадь квадрата равна %.1lf\n", area);
+            puts("Введите длину высоты равнобедренного треугольника и длину основания:");
+            scanf("%lf %lf", &heigth, &len);
+            double area = getArea(heigth, len);
+            printf("Площадь равнобедренного треугольника равна %.1lf\n", area);
             break;
 
         case 3:
-            puts("Введите длину стороны квадрата: ");
+            puts("Введите длину высоты равнобедренного треугольника: ");
             scanf("%lf", &heigth);
 
             puts("\n\n\n");
-            drawsquare(heigth);
+            drawtriangle(heigth);
             puts("\n\n\n");
             break;
 
