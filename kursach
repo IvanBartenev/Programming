@@ -5,6 +5,8 @@
 #include <stdlib.h>
 
 #define PI 3.1415926535
+#define SCREENW  60
+#define SCREENH  40
 
 typedef double (*Funcional)(double);
 
@@ -13,6 +15,7 @@ double f1(double x);
 double f2(double x);
 double* step_func(Funcional func, double lb, double rb, double step);
 int print_func(Funcional func, double lb, double rb, double step);
+int graph(double x0, double x1, Funcional fun);
 
 
 void main()
@@ -20,13 +23,14 @@ void main()
 	setlocale(0, "Russian");
 	double x;
 	double* res;
-	int ans;
+	int choisemain;
 	char lb, rb;
 	double lNum, rNum, step;
+	int choise;
 	menu();
-	scanf("%d", &ans);
-	while (ans != 5) {
-		switch (ans) {
+	scanf("%d", &choisemain);
+	while (choisemain != 6) {
+		switch (choisemain) {
 		case 1:
 			printf("\nВведите значение x: ");
 			scanf("%lf", &x);
@@ -89,12 +93,49 @@ void main()
 			res = step_func(f2, lNum, rNum, step);
 			print_func(f2, lNum, rNum, step);
 			break;
+		case 5:
+			getchar();
+			printf("Введите интервал функции (Примеры ввода: (1;2,5), [2;4,25] ): ");
+			scanf("\n%c%lf;%lf%c", &lb, &lNum, &rNum, &rb);
+			printf("\n%c%.2lf;%.2lf%c", lb, lNum, rNum, rb);
+			if (lNum > rNum) {
+				printf("\n\nОшибка: Значение левой границы интервала больше значения правой границы интервала.");
+			}
+			if ((lb == '(' || lb == '[') && (rb == ')' || rb == ']')) {
+				getchar();
+			}
+			else {
+				puts("\n\nОшибка: Вы ввели невозможный символ для границы");
+				break;
+			}
+			printf("\n\nВведите шаг для функции: ");
+			scanf("%lf", &step);
+			if (rb == ')') {
+				rNum -= step;
+			}
+			if (lb == '(') {
+				lNum += step;
+			}
+			puts("Введите номер функции:\nY(x) - 1;\nV(x) - 2.\n");
+			scanf("%d", &choise);
+			switch (choise)
+			{
+			case 1:
+				graph(lNum, rNum, f1);
+				break;
+			case 2:
+				graph(lNum, rNum, f2);
+				break;
+			default:
+				puts("Ошибка: Функции под таки номером не существует.");
+			}
+			break;
 		default:
 			printf("\nОшибка: Вы ввели несуществующий пункт меню. Попробуйте снова:");
 		}
 		printf("\n\nВведите номер пункта меню: ");
 		getchar();
-		scanf("%d", &ans);
+		scanf("%d", &choisemain);
 	}
 
 	return 0;
@@ -108,7 +149,8 @@ void menu()
 	printf("|2.Вычислить значение функции V(x).                                           |\n");
 	printf("|3.Вычислить значение функции Y(x) с заданным интервалом и шагом.             |\n");
 	printf("|4.Вычислить значение функции V(x) с заданным интервалом и шагом.             |\n");
-	printf("|5.Выйти из программы.                                                        |\n");
+	printf("|5.Построить график функции Y(x) или V(x).                                    |\n");
+	printf("|6.Выйти из программы.                                                        |\n");
 	printf("|                                                                             |\n");
 	printf("|* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *|\n");
 	puts("\n\nВведите номер пункта меню : ");
@@ -131,24 +173,62 @@ double f2(double x)
 	return res;
 }
 
-double* step_func(Funcional func, double lb, double rb, double step)
+double* step_func(Funcional fun, double lb, double rb, double step)
 {
 	double* result = (double*)malloc(((rb - lb) / step) * sizeof(double));
 	double count = lb;
 	for (int i = 0; i <= (rb - lb) / step; i++)
 	{
-		result[i] = func(count);
+		result[i] = fun(count);
 		count += step;
 	}
 	return result;
 }
 
-int print_func(Funcional func, double lb, double rb, double step)
+int print_func(Funcional fun, double lb, double rb, double step)
 {
 	puts("\n");
 	for (double x = lb; x <= rb; x += step) {
-		printf("| x = %9.3f | y = %9.3f |\n", x, func(x));
+		printf("| x = %9.3f | y = %9.3f |\n", x, fun(x));
 	}
 	puts("\n");
+	return 0;
+}
+
+int graph(double x0, double x1, Funcional fun)
+{
+	char screen[SCREENW][SCREENH];
+	double x, y[SCREENW];
+	double ymin = 0, ymax = 0;
+	double hx, hy;
+	int i, j;
+	int xz, yz;
+	hx = (x1 - x0) / (SCREENW - 1);
+	for (i = 0, x = x0; i < SCREENW; ++i, x += hx) 
+	{
+		y[i] = fun(x);
+		if (y[i] < ymin) ymin = y[i];
+		if (y[i] > ymax) ymax = y[i];
+	}
+	hy = (ymax - ymin) / (SCREENH - 1);
+	yz = (int)floor(ymax / hy + 0.5);
+	xz = (int)floor((0. - x0) / hx + 0.5);
+	for (j = 0; j < SCREENH; ++j)
+		for (i = 0; i < SCREENW; ++i) 
+		{
+			if (j == yz && i == xz) screen[i][j] = '+';
+			else if (j == yz) screen[i][j] = '-';
+				else if (i == xz) screen[i][j] = '|';
+					else screen[i][j] = ' ';
+		}
+	for (i = 0; i < SCREENW; ++i) {
+		j = (int)floor((ymax - y[i]) / hy + 0.5);
+		screen[i][j] = '*';
+	}
+	for (j = 0; j < SCREENH; ++j) 
+	{
+		for (i = 0; i < SCREENW; ++i)  putchar(screen[i][j]);
+		putchar('\n');
+	}
 	return 0;
 }
