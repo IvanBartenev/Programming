@@ -15,7 +15,7 @@ double f1(double x);
 double f2(double x);
 double* step_func(Funcional func, double lb, double rb, double step);
 int print_func(Funcional func, double lb, double rb, double step);
-int graph(double x0, double x1, Funcional fun);
+int graph(double x0, double x1, Funcional funс);
 
 
 void main()
@@ -43,7 +43,7 @@ void main()
 			break;
 		case 3:
 			getchar();
-			printf("Введите интервал функции (Примеры ввода: (1;2,5), [2;4,25] ): ");
+			printf("Введите интервал, полуинтервал или отрезок функции (Примеры ввода: (1;2,5), [2;4,25] ): ");
 			scanf("\n%c%lf;%lf%c", &lb, &lNum, &rNum, &rb);
 			printf("\n%c%.2lf;%.2lf%c", lb, lNum, rNum, rb);
 			if (lNum > rNum) {
@@ -69,7 +69,7 @@ void main()
 			break;
 		case 4:
 			getchar();
-			printf("Введите интервал функции (Примеры ввода: (1;2,5), [2;4,25] ): ");
+			printf("Введите интервал, полуинтервал или отрезок функции (Примеры ввода: (1;2,5), [2;4,25] ): ");
 			scanf("\n%c%lf;%lf%c", &lb, &lNum, &rNum, &rb);
 			printf("\n%c%.2lf;%.2lf%c", lb, lNum, rNum, rb);
 			if (lNum > rNum) {
@@ -95,7 +95,7 @@ void main()
 			break;
 		case 5:
 			getchar();
-			printf("Введите интервал функции (Примеры ввода: (1;2,5), [2;4,25] ): ");
+			printf("Введите интервал, полуинтервал или отрезок функции (Примеры ввода: (1;2,5), [2;4,25] ): ");
 			scanf("\n%c%lf;%lf%c", &lb, &lNum, &rNum, &rb);
 			printf("\n%c%.2lf;%.2lf%c", lb, lNum, rNum, rb);
 			if (lNum > rNum) {
@@ -168,8 +168,8 @@ double f2(double x)
 {
 	double res;
 	if (x < 10) { res = (((1. / 2) * pow(x, 2)) - sin(x / 57.3)); }
-		else if (x >= 10 && x <= 15) { res = exp(x + 1); }
-			else { res = sin((pow(x, 2) + 1) / 57.3); }
+	else if (x >= 10 && x <= 15) { res = exp(x + 1); }
+	else { res = sin((pow(x, 2) + 1) / 57.3); }
 	return res;
 }
 
@@ -195,7 +195,7 @@ int print_func(Funcional fun, double lb, double rb, double step)
 	return 0;
 }
 
-int graph(double x0, double x1, Funcional fun)
+int graph(double x0, double x1, Funcional funс)
 {
 	char screen[SCREENW][SCREENH];
 	double x, y[SCREENW];
@@ -204,9 +204,9 @@ int graph(double x0, double x1, Funcional fun)
 	int i, j;
 	int xz, yz;
 	hx = (x1 - x0) / (SCREENW - 1);
-	for (i = 0, x = x0; i < SCREENW; ++i, x += hx) 
+	for (i = 0, x = x0; i < SCREENW; ++i, x += hx)
 	{
-		y[i] = fun(x);
+		y[i] = funс(x);
 		if (y[i] < ymin) ymin = y[i];
 		if (y[i] > ymax) ymax = y[i];
 	}
@@ -214,7 +214,7 @@ int graph(double x0, double x1, Funcional fun)
 	yz = (int)floor(ymax / hy + 0.5);
 	xz = (int)floor((0. - x0) / hx + 0.5);
 	for (j = 0; j < SCREENH; ++j)
-		for (i = 0; i < SCREENW; ++i) 
+		for (i = 0; i < SCREENW; ++i)
 		{
 			if (j == yz && i == xz) screen[i][j] = '+';
 			else if (j == yz) screen[i][j] = '-';
@@ -225,7 +225,7 @@ int graph(double x0, double x1, Funcional fun)
 		j = (int)floor((ymax - y[i]) / hy + 0.5);
 		screen[i][j] = '*';
 	}
-	for (j = 0; j < SCREENH; ++j) 
+	for (j = 0; j < SCREENH; ++j)
 	{
 		for (i = 0; i < SCREENW; ++i)  putchar(screen[i][j]);
 		putchar('\n');
