@@ -5,8 +5,8 @@
 #include <stdlib.h>
 
 #define PI 3.1415926535
-#define SCREENW  60
-#define SCREENH  40
+#define SCREENW  100
+#define SCREENH  50
 
 typedef double (*Funcional)(double);
 
@@ -43,7 +43,7 @@ void main()
 			break;
 		case 3:
 			getchar();
-			printf("Введите интервал, полуинтервал или отрезок функции (Примеры ввода: (1;2,5), [2;4,25] ): ");
+			printf("\n\nВведите интервал, полуинтервал или отрезок функции (Примеры ввода: (1;2,5), [2;4,25] ): ");
 			scanf("\n%c%lf;%lf%c", &lb, &lNum, &rNum, &rb);
 			printf("\n%c%.2lf;%.2lf%c", lb, lNum, rNum, rb);
 			if (lNum > rNum) {
@@ -69,7 +69,7 @@ void main()
 			break;
 		case 4:
 			getchar();
-			printf("Введите интервал, полуинтервал или отрезок функции (Примеры ввода: (1;2,5), [2;4,25] ): ");
+			printf("\n\nВведите интервал, полуинтервал или отрезок функции (Примеры ввода: (1;2,5), [2;4,25] ): ");
 			scanf("\n%c%lf;%lf%c", &lb, &lNum, &rNum, &rb);
 			printf("\n%c%.2lf;%.2lf%c", lb, lNum, rNum, rb);
 			if (lNum > rNum) {
@@ -116,7 +116,7 @@ void main()
 			if (lb == '(') {
 				lNum += step;
 			}
-			puts("Введите номер функции:\nY(x) - 1;\nV(x) - 2.\n");
+			puts("\n\nВведите номер функции:\nY(x) - 1;\nV(x) - 2.\n");
 			scanf("%d", &choise);
 			switch (choise)
 			{
@@ -173,23 +173,23 @@ double f2(double x)
 	return res;
 }
 
-double* step_func(Funcional fun, double lb, double rb, double step)
+double* step_func(Funcional func, double lb, double rb, double step)
 {
-	double* result = (double*)malloc(((rb - lb) / step) * sizeof(double));
+	double * result = (double*)malloc(((rb - lb) / step));
 	double count = lb;
 	for (int i = 0; i <= (rb - lb) / step; i++)
 	{
-		result[i] = fun(count);
+		result[i] = func(count);
 		count += step;
 	}
 	return result;
 }
 
-int print_func(Funcional fun, double lb, double rb, double step)
+int print_func(Funcional func, double lb, double rb, double step)
 {
 	puts("\n");
 	for (double x = lb; x <= rb; x += step) {
-		printf("| x = %9.3f | y = %9.3f |\n", x, fun(x));
+		printf("|	x = %8.3f	 |	y = %8.3f	 |\n", x, func(x));
 	}
 	puts("\n");
 	return 0;
@@ -218,8 +218,8 @@ int graph(double x0, double x1, Funcional funс)
 		{
 			if (j == yz && i == xz) screen[i][j] = '+';
 			else if (j == yz) screen[i][j] = '-';
-				else if (i == xz) screen[i][j] = '|';
-					else screen[i][j] = ' ';
+			else if (i == xz) screen[i][j] = '|';
+			else screen[i][j] = ' ';
 		}
 	for (i = 0; i < SCREENW; ++i) {
 		j = (int)floor((ymax - y[i]) / hy + 0.5);
