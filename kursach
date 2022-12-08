@@ -13,7 +13,7 @@ typedef double (*Funcional)(double);
 void menu();
 double f1(double x);
 double f2(double x);
-double* step_func(Funcional func, double lb, double rb, double step);
+double * step_func(Funcional func, double lb, double rb, double step);
 int print_func(Funcional func, double lb, double rb, double step);
 int graph(double x0, double x1, Funcional funс);
 
@@ -175,13 +175,14 @@ double f2(double x)
 
 double* step_func(Funcional func, double lb, double rb, double step)
 {
-	double * result = (double*)malloc(((rb - lb) / step));
+	double * result = malloc(sizeof(long double));
 	double count = lb;
 	for (int i = 0; i <= (rb - lb) / step; i++)
 	{
 		result[i] = func(count);
 		count += step;
 	}
+	free(result);
 	return result;
 }
 
