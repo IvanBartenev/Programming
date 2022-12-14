@@ -1,0 +1,120 @@
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <stdbool.h>
+
+void ex5();
+
+void main()
+{
+	setlocale(0, "rus");
+
+	//1 Задание
+	int* pi, i = 5;
+	float* pf, f = 2.1f;
+	char* pa, a = "c";
+	double* pd, d = 4.689361;
+	printf("%lu\n", sizeof(pi));
+	printf("%lu\n", sizeof(pf));
+	printf("%lu\n", sizeof(pa));
+	printf("%lu\n", sizeof(pd));
+
+	//2 Задание
+	float PI = 3.14159, *p1, *p2;
+	p1 = p2 = &PI;
+	printf("\n\nПо адресу p1=%x хранится *p1=%g\n", p1, *p1);
+	printf("По адресу p2=%x хранится *p2=%g\n", p2, *p2);
+
+	//3 Задание
+	int* paa0, x = 5;
+	paa0 = &x;
+	printf("\n\nПо адресу %p хранится *ptr = %g\n", paa0, *paa0);
+	paa0++;
+	printf("По адресу %p хранится *ptr = %g		<---Тип данных - int\n", paa0, *paa0);
+	printf("%lu\n", sizeof(paa0));
+	paa0--;
+	printf("По адресу %p хранится *ptr = %g\n", paa0, *paa0);
+	printf("%lu\n", sizeof(paa0));
+	//3.1 Задание
+	double* paa1, x1 = 5.;
+	paa1 = &x1;
+	printf("\n\nПо адресу %p хранится *ptr = %g\n", paa1, *paa1);
+	paa1++;
+	printf("По адресу %p хранится *ptr = %g		<---Тип данных - double\n", paa1, *paa1);
+	printf("%lu\n", sizeof(paa1));
+	paa1--;
+	printf("По адресу %p хранится *ptr = %g\n", paa1, *paa1);
+	printf("%lu\n", sizeof(paa1));
+	//3.2 Задание
+	char* paa2, x2 = "c";
+	paa2 = &x2;
+	printf("\n\nПо адресу %p хранится *ptr = %g\n", paa2, *paa2);
+	paa2++;
+	printf("По адресу %p хранится *ptr = %g		<---Тип данных - char\n", paa2, *paa2);
+	printf("%lu\n", sizeof(paa2));
+	paa2--;
+	printf("По адресу %p хранится *ptr = %g\n", paa2, *paa2);
+	printf("%lu\n", sizeof(paa2));
+	//3.3 Задание
+	short unsigned int* paa3, x3 = 5;
+	paa3 = &x3;
+	printf("\n\nПо адресу %p хранится *ptr = %g\n", paa3, *paa3);
+	paa3++;
+	printf("По адресу %p хранится *ptr = %g		<--- Тип данных - short unsigned int\n", paa3, *paa3);
+	paa3--;
+	printf("По адресу %p хранится *ptr = %g\n", paa3, *paa3);
+	//3.4 Задание
+	_Bool* paa4, x4 = true;
+	paa4 = &x4;
+	printf("\n\nПо адресу %p хранится *ptr = %g\n", paa4, *paa4);
+	paa4++;
+	printf("По адресу %p хранится *ptr = %g			<--- Тип данных - bool\n", paa4, *paa4);
+	paa4--;
+	printf("По адресу %p хранится *ptr = %g\n", paa4, *paa4);
+
+	//4 Задание
+	float array[10] = { 1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8, 9.9, 10.1 };
+	float* ptr_a;
+	printf("\n\narray = %p, &array[0] = %p, &array = %p\n", array, &array[0], &array);
+	ptr_a = &array;
+	printf("ptr_a = %p\n\n", ptr_a);
+	for (int i = 0, count = 0; i < 10; i++)
+	{
+		printf("%d позиция:\n", count);
+		count++;
+		printf("ptr_a = %p; *ptr_a = %f\n\n", ptr_a, *ptr_a);
+		ptr_a++;
+	}
+	puts("Обратный порядок прохода\n");
+	ptr_a = &array[9];
+	for (int i = 10, count = 9; i > 0; i--) 
+	{
+		printf("%d позиция:\n", count);
+		count--;
+		printf("ptr_a = %p; *ptr_a = %f\n\n", ptr_a, *ptr_a);
+		ptr_a--;
+	}
+	
+	//5 Задание
+	ex5();
+
+	return 0;
+}
+
+void ex5()
+{
+	float x = 12345.0;
+	float* prt;
+	unsigned char* a1, * a2, * a3, * a4;
+	unsigned char* a;
+
+	prt = &x;
+	a = (unsigned char*)prt;
+
+	a1 = a + 3;
+	a2 = a + 2;
+	a3 = a + 1;
+	a4 = a;
+	printf("%.2x\n%.2x\n%.2x\n%.2x\n", *a1, *a2, *a3, *a4);
+}
