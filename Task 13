@@ -1,0 +1,68 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+char* UpRegister(char* arr) 
+{
+    int i = 0;
+    while (arr[i] != '\0') {
+        arr[i] = toupper(arr[i]);
+        i++;
+    }
+    return arr;
+}
+char* HalfUpHalfDown(char* arr2)
+{
+    int i = 0;
+    while (arr2[i] != '\0') {
+        arr2[i] = toupper(arr2[i]);
+        i += 2;
+    }
+    return arr2;
+}
+
+void main()
+{
+ 
+    char name[41], newName[41] = "Hello, ", stroke[40] = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
+    printf("Enter your name: ");
+    scanf("%s", name);
+    strcat(newName, name);
+    printf("%s!", newName);
+
+
+    printf("\n\n%s!", UpRegister(newName));
+
+
+    strncat(newName, stroke, 40 - strlen(newName));
+    printf("\n\n%s! - %d symbols", newName, strlen(newName));
+
+
+    printf("\n\n%s", HalfUpHalfDown(name));
+
+    char str[100];
+    char new[2] = {'.', '\0'};
+    char target[2] = {',', '\0'};
+    char editstr[100];
+    printf("\n\nEnter a stroke: ");
+    getchar();
+    fgets(str, 100, stdin);
+    printf("\n\nYour stroke is: %s", str);
+
+    for (int i = 0; i < strlen(str); i++) 
+    {
+        if (str[i] == target[0])
+        {
+
+            editstr[i] = new[0];
+        }
+        else
+        {
+            editstr[i] = str[i];
+        }
+    }
+    printf("\nYour result:\n%s", editstr);
+    printf("\n");
+    return 0;
+}
