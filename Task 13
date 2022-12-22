@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
 
-char* UpRegister(char* arr) 
+char* UpRegister(char* arr)
 {
     int i = 0;
     while (arr[i] != '\0') {
@@ -24,7 +23,7 @@ char* HalfUpHalfDown(char* arr2)
 
 void main()
 {
- 
+
     char name[41], newName[41] = "Hello, ", stroke[40] = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
     printf("Enter your name: ");
     scanf("%s", name);
@@ -49,7 +48,7 @@ void main()
     fgets(str, 100, stdin);
     printf("\n\nYour stroke is: %s", str);
 
-    for (int i = 0; i < strlen(str); i++) 
+    for (int i = 0; i < strlen(str); i++)
     {
         if (str[i] == ',')
         {
@@ -67,4 +66,3 @@ void main()
     printf("\n");
     return 0;
 }
-
