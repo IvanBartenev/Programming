@@ -10,7 +10,7 @@ void main()
 {
 	setlocale(0, "rus");
 
-	//1 Задание
+	puts("\n1 Задание\n"); 
 	int* pi, i = 5;
 	float* pf, f = 2.1f;
 	char* pa, a = "c";
@@ -20,13 +20,13 @@ void main()
 	printf("%lu\n", sizeof(pa));
 	printf("%lu\n", sizeof(pd));
 
-	//2 Задание
-	float PI = 3.14159, *p1, *p2;
+	puts("\n\n2 Задание\n");
+	float PI = 3.14159, * p1, * p2;
 	p1 = p2 = &PI;
 	printf("\n\nПо адресу p1=%x хранится *p1=%g\n", p1, *p1);
 	printf("По адресу p2=%x хранится *p2=%g\n", p2, *p2);
 
-	//3 Задание
+	puts("\n\n3 Задание\n");
 	int* paa0, x = 5;
 	paa0 = &x;
 	printf("\n\nПо адресу %p хранится *ptr = %g\n", paa0, *paa0);
@@ -36,7 +36,7 @@ void main()
 	paa0--;
 	printf("По адресу %p хранится *ptr = %g\n", paa0, *paa0);
 	printf("%lu\n", sizeof(paa0));
-	//3.1 Задание
+	puts("\n\n3.1 Задание\n");
 	double* paa1, x1 = 5.;
 	paa1 = &x1;
 	printf("\n\nПо адресу %p хранится *ptr = %g\n", paa1, *paa1);
@@ -46,7 +46,7 @@ void main()
 	paa1--;
 	printf("По адресу %p хранится *ptr = %g\n", paa1, *paa1);
 	printf("%lu\n", sizeof(paa1));
-	//3.2 Задание
+	puts("\n\n3.2 Задание\n");
 	char* paa2, x2 = "c";
 	paa2 = &x2;
 	printf("\n\nПо адресу %p хранится *ptr = %g\n", paa2, *paa2);
@@ -56,7 +56,7 @@ void main()
 	paa2--;
 	printf("По адресу %p хранится *ptr = %g\n", paa2, *paa2);
 	printf("%lu\n", sizeof(paa2));
-	//3.3 Задание
+	puts("\n\n3.3 Задание\n");
 	short unsigned int* paa3, x3 = 5;
 	paa3 = &x3;
 	printf("\n\nПо адресу %p хранится *ptr = %g\n", paa3, *paa3);
@@ -64,7 +64,7 @@ void main()
 	printf("По адресу %p хранится *ptr = %g		<--- Тип данных - short unsigned int\n", paa3, *paa3);
 	paa3--;
 	printf("По адресу %p хранится *ptr = %g\n", paa3, *paa3);
-	//3.4 Задание
+	puts("\n\n3.4 Задание\n");
 	_Bool* paa4, x4 = true;
 	paa4 = &x4;
 	printf("\n\nПо адресу %p хранится *ptr = %g\n", paa4, *paa4);
@@ -73,7 +73,7 @@ void main()
 	paa4--;
 	printf("По адресу %p хранится *ptr = %g\n", paa4, *paa4);
 
-	//4 Задание
+	puts("\n\n4 Задание\n");
 	float array[10] = { 1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8, 9.9, 10.1 };
 	float* ptr_a;
 	printf("\n\narray = %p, &array[0] = %p, &array = %p\n", array, &array[0], &array);
@@ -88,15 +88,15 @@ void main()
 	}
 	puts("Обратный порядок прохода\n");
 	ptr_a = &array[9];
-	for (int i = 10, count = 9; i > 0; i--) 
+	for (int i = 10, count = 9; i > 0; i--)
 	{
 		printf("%d позиция:\n", count);
 		count--;
 		printf("ptr_a = %p; *ptr_a = %f\n\n", ptr_a, *ptr_a);
 		ptr_a--;
 	}
-	
-	//5 Задание
+
+	puts("\n\n5 Задание\n");
 	ex5();
 
 	return 0;
