@@ -143,11 +143,12 @@ int main()
 			printf("\nОшибка: Вы ввели несуществующий пункт меню. Попробуйте снова:");
 			break;
 		}
-		puts("\n\n\n");
-		getchar();
-		scanf("%d", &choisemain);
+	puts("\n\n\n");
+	getchar();
+	puts("\n\nВведите номер пункта меню : ");
+	scanf("%d", &choisemain);
 	}
-	printf("\n*	*	*	Спасибо за внимание!	*	*	*\n");
+	printf("\n*	*	*	Спасибо за использование программы!	*	*	*\n");
 	return 0;
 }
 
@@ -155,7 +156,7 @@ int main()
 double func1(double x)
 {
 	double res;
-	if (x == 0) 
+	if (x == 0)
 	{
 		printf("\nОшибка: знаменатель равен нулю");
 		return -1;
