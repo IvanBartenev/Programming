@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <math.h>
+#include <string.h>
+
+#define N 5
+
+double* full_elements(double* ptr_array, int n);
+int put_elements(double* ptr_array, int n);
+double* calc_elements(double* ptr_array, int n);
+
+void main()
+{
+	setlocale(LC_ALL, "Rus");
+	double array[N];
+	int size;
+	printf("Введите размер массива: ");
+	scanf("%d", &size);
+	double* ptr_array = array;
+
+
+
+}
+
+double* full_elements(double* ptr_array, int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		ptr_array[i] = rand(10);
+	}
+}
+
+int put_elements(double* ptr_array, int n)
+{
+	int i = 0;
+	while (ptr_array != '\0')
+	{
+		printf("%d", ptr_array[i]);
+		i++;
+	}
+	return 0;
+}
