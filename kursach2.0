@@ -8,25 +8,36 @@
 #define SCREENW  100
 #define SCREENH  50
 
-typedef double (*Funcional)(double);
+typedef double (*Funcion)(double);
 
-void menu();
 double f1(double x);
 double f2(double x);
-int print_func(Funcional func, double lb, double rb, double step);
-int graph(double x0, double x1, Funcional funс);
+int print_func(Funcion func, double lb, double rb, double step);
+int graph(double x0, double x1, Funcion funс);
 
-
-void main()
+int main()
 {
-	setlocale(0, "Russian");
+	setlocale(LC_ALL, "Russian");
 	double x;
 	double* res;
 	int choisemain;
 	char lb, rb;
 	double lNum, rNum, step;
 	int choise;
-	menu();
+	printf("|* * * * * * * * * * * * * * * * * * * * * Меню  программы * * * * * * * * * * * * * * * * * * * * *|\n");
+	printf("|                                                                                                   |\n");
+	printf("| Выполнил студент: Бартенев Иван Дмитриевич                                                        |\n");
+	printf("| Группа: бИСТ - 222                                                                                |\n");
+	printf("|                                                                                                   |\n");
+	printf("| 1.Найти значение функции Y(x) при заданном значении аргумента x, которое вводиться с клавиатуры.  |\n");
+	printf("| 2.Найти значение функции V(x) при заданном значении аргумента x, которое вводиться с клавиатуры.  |\n");
+	printf("| 3.Вычислить значение функции Y(x) с заданным интервалом, полуинтервалом, отрезком и шагом.        |\n");
+	printf("| 4.Вычислить значение функции V(x) с заданным интервалом, полуинтервалом, отрезком и шагом.        |\n");
+	printf("| 5.Построить график, выбранной функции Y(x) или V(x).                                              |\n");
+	printf("| 6.Завершение программы.                                                                           |\n");
+	printf("|                                                                                                   |\n");
+	printf("|* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *|\n");
+	puts("\n\nВведите номер пункта меню : ");
 	scanf("%d", &choisemain);
 	while (choisemain != 6) {
 		switch (choisemain) {
@@ -113,7 +124,7 @@ void main()
 			if (lb == '(') {
 				lNum += step;
 			}
-			puts("\n\nВведите номер функции:\nY(x) - 1;\nV(x) - 2.\n");
+			puts("\n\nВведите номер функции:\nY(x) - 1;\tV(x) - 2.\n");
 			scanf("%d", &choise);
 			switch (choise)
 			{
@@ -129,31 +140,16 @@ void main()
 			break;
 		default:
 			printf("\nОшибка: Вы ввели несуществующий пункт меню. Попробуйте снова:");
+			break;
 		}
 		puts("\n\n\n");
-		menu();
 		getchar();
 		scanf("%d", &choisemain);
 	}
-
+	printf("\n*	*	*	Спасибо за внимание!	*	*	*\n");
 	return 0;
 }
 
-void menu()
-{
-	printf("|* * * * * * * * * * * * * * * Меню  программы * * * * * * * * * * * * * * * *|\n");
-	printf("|                                                                             |\n");
-	printf("|1.Вычислить значение функции Y(x).                                           |\n");
-	printf("|2.Вычислить значение функции V(x).                                           |\n");
-	printf("|3.Вычислить значение функции Y(x) с заданным интервалом и шагом.             |\n");
-	printf("|4.Вычислить значение функции V(x) с заданным интервалом и шагом.             |\n");
-	printf("|5.Построить график функции Y(x) или V(x).                                    |\n");
-	printf("|6.Выйти из программы.                                                        |\n");
-	printf("|                                                                             |\n");
-	printf("|* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *|\n");
-	puts("\n\nВведите номер пункта меню : ");
-	return 0;
-}
 
 double f1(double x)
 {
@@ -176,7 +172,7 @@ double f2(double x)
 }
 
 
-int print_func(Funcional func, double lb, double rb, double step)
+int print_func(Funcion func, double lb, double rb, double step)
 {
 	puts("\n");
 	printf("|------------------------|-----------------------|\n");
@@ -189,7 +185,7 @@ int print_func(Funcional func, double lb, double rb, double step)
 	return 0;
 }
 
-int graph(double x0, double x1, Funcional funс)
+int graph(double x0, double x1, Funcion funс)
 {
 	char screen[SCREENW][SCREENH];
 	double x, y[SCREENW];
