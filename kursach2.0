@@ -10,10 +10,10 @@
 
 typedef double (*Funcion)(double);
 
-double f1(double x);
-double f2(double x);
+double func1(double x);
+double func2(double x);
 int print_func(Funcion func, double lb, double rb, double step);
-int graph(double x0, double x1, Funcion funс);
+int print_graph(double x0, double x1, Funcion funс);
 
 int main()
 {
@@ -39,17 +39,18 @@ int main()
 	printf("|* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *|\n");
 	puts("\n\nВведите номер пункта меню : ");
 	scanf("%d", &choisemain);
-	while (choisemain != 6) {
+	while (choisemain != 6)
+	{
 		switch (choisemain) {
 		case 1:
-			printf("\nВведите значение x: ");
+			printf("\nВведите значение аргумента x: ");
 			scanf("%lf", &x);
-			printf("\nY(%.2lf)=%.2lf", x, f1(x));
+			printf("\nY(%.2lf)=%.2lf", x, func1(x));
 			break;
 		case 2:
-			printf("\nВведите значение x: ");
+			printf("\nВведите значение аргумента x: ");
 			scanf("%lf", &x);
-			printf("\nV(%.2lf)=%.2lf", x, f2(x));
+			printf("\nV(%.2lf)=%.2lf", x, func2(x));
 			break;
 		case 3:
 			getchar();
@@ -74,7 +75,7 @@ int main()
 			if (lb == '(') {
 				lNum = lNum + step;
 			}
-			print_func(f1, lNum, rNum, step);
+			print_func(func1, lNum, rNum, step);
 			break;
 		case 4:
 			getchar();
@@ -99,7 +100,7 @@ int main()
 			if (lb == '(') {
 				lNum = lNum + step;
 			}
-			print_func(f2, lNum, rNum, step);
+			print_func(func2, lNum, rNum, step);
 			break;
 		case 5:
 			getchar();
@@ -129,10 +130,10 @@ int main()
 			switch (choise)
 			{
 			case 1:
-				graph(lNum, rNum, f1);
+				print_graph(lNum, rNum, func1);
 				break;
 			case 2:
-				graph(lNum, rNum, f2);
+				print_graph(lNum, rNum, func2);
 				break;
 			default:
 				puts("\nОшибка: Функции под таки номером не существует.");
@@ -151,10 +152,11 @@ int main()
 }
 
 
-double f1(double x)
+double func1(double x)
 {
 	double res;
-	if (x == 0) {
+	if (x == 0) 
+	{
 		printf("\nОшибка: знаменатель равен нулю");
 		return -1;
 	}
@@ -162,7 +164,7 @@ double f1(double x)
 	return res;
 }
 
-double f2(double x)
+double func2(double x)
 {
 	double res;
 	if (x < 10) { res = (((1. / 2) * pow(x, 2)) - sin(x / 57.3)); }
@@ -185,7 +187,7 @@ int print_func(Funcion func, double lb, double rb, double step)
 	return 0;
 }
 
-int graph(double x0, double x1, Funcion funс)
+int print_graph(double x0, double x1, Funcion funс)
 {
 	char screen[SCREENW][SCREENH];
 	double x, y[SCREENW];
