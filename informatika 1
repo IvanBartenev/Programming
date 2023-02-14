@@ -1,0 +1,52 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <locale.h>
+#include <math.h>
+#include <stdio.h>
+
+//Вариант 2
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	int a1, b1, a2;
+	double res1, res2;
+	double result1, result2;
+	puts("а) Определить, какое равенство точнее.\n\n");
+	puts("Введите целочисленное делимое для первого равенства: ");
+	scanf("%d", &a1);
+	puts("Введите целочисленный делитель для первого равенства: ");
+	scanf("%d", &b1);
+	puts("Введите целочисленное частное для первого равенства: ");
+	scanf("%lf", &res1);
+
+	puts("\nВведите целочисленное подкоренное значение для второго равенства: ");
+	scanf("%d", &a2);
+	puts("Введите целочисленный результат вычисления квадратного корня для второго равенства: ");
+	scanf("%lf", &res2);
+
+
+	result1 = (double)a1 / b1;
+	result2 = sqrt(a2);
+	printf("\nПервое равенство: %d / %d = %f\n", a1, b1, result1);
+	printf("Второе равенство: sqrt(%d) = %f\n", a2, result2);
+	double deflection1, deflection2;
+	deflection1 = fabs(result1 - res1);
+	printf("\nОтносительная погрешность первого равенства равна %f\n", deflection1);
+	deflection2 = fabs(result2 - res2);
+	printf("Относительная погрешность второго равенства равна %f\n", deflection2);
+	if (deflection1 < deflection2)
+	{
+		printf("\nВторое равнество точнее, так как его относительная погрешность в процентах составляет %.2f\nОтносительная погрешность второго равенства в процентах составляет %.2f\n\n", (deflection2 / result2) * 100, (deflection1 / result1) * 100);
+	}
+	else if (deflection1 > deflection2)
+	{
+		printf("\nПервое равнество точнее, так как его относительная погрешность в процентах составляет %.2f\nОтносительная погрешность второго равенства в процентах составляет %.2f\n\n", (deflection1 / result1) * 100, (deflection2 / result2) * 100);
+	}
+	else
+	{
+		printf("\nОтносительные погрешности равенст равны и составляют %f%\n\n", (deflection1 / result1) / 100);
+	}
+
+	puts("\n\n\nв) Найти предельные абсолютную и относительную погрешности приближенного числа, все цифры которого по умолчанию верные.\n\n");
+
+}
