@@ -48,5 +48,15 @@ int main()
 	}
 
 	puts("\n\n\nв) Найти предельные абсолютную и относительную погрешности приближенного числа, все цифры которого по умолчанию верные.\n\n");
-
+	double num;
+	int count = 1;
+	puts("Введите число: ");
+	scanf("%lf", &num);
+	double extraNum = num;
+	while (extraNum < 1)
+	{
+		extraNum *= 10;
+		count++;
+	}
 }
+
